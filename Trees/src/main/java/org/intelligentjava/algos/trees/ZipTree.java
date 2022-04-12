@@ -9,7 +9,7 @@ import org.intelligentjava.algos.trees.utils.MathUtils;
  * @created April 4, 2021
  * 
  */
-public class ZipTree extends AbstractSelfBalancingBinarySearchTree {
+public class ZipTree extends AbstractBinarySearchTree {
 
     // Replace with geometric distribution
     private Random random = new Random(System.currentTimeMillis());
@@ -21,6 +21,49 @@ public class ZipTree extends AbstractSelfBalancingBinarySearchTree {
      */
     @Override
     public Node insert(int element) {
+        int rank = random.nextInt(10000);
+        int key = element;
+        ZipNode curr = root;
+        ZipNode x = createNode(key, null, null, null, rank);
+        ZipNode prev;
+
+        while(curr!=null && ((rank<curr.rank)||(rank == curr.rank && key>curr.value))){
+            prev = curr;
+            curr = key<curr.value?curr.left:curr.right;
+        }
+
+        if(curr==root){
+            root=x;
+        }else if(key<prev.value){
+            prev.left=x;
+        }else{
+            prev.right=x;
+        }
+
+        ZipNode fix;
+        while(curr!=null){
+            fix=prev;
+            if(curr.value<key){
+                do{
+                    prev=curr;
+                    curr=curr.right;
+                }
+                while(curr!=null && curr.value<key)
+            }else{
+                do{
+                    prev=curr;
+                    curr=curr.left;
+                }
+                while(curr!=null && curr.value>key)
+            }
+
+            if((fix.value>key)||(fix == x && prev.value > key) {
+                fix.left=curr;
+            }else{
+                fix.right=curr;
+            }
+        }
+        return x;
     }
 
     /**
