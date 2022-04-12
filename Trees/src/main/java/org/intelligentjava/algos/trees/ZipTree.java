@@ -48,13 +48,13 @@ public class ZipTree extends AbstractBinarySearchTree {
                     prev=curr;
                     curr=curr.right;
                 }
-                while(curr!=null && curr.value<key)
+                while(curr!=null && curr.value<=key);
             }else{
                 do{
                     prev=curr;
                     curr=curr.left;
                 }
-                while(curr!=null && curr.value>key)
+                while(curr!=null && curr.value>=key);
             }
 
             if((fix.value>key)||(fix == x && prev.value > key) {
