@@ -74,32 +74,32 @@ public class TreesInsertSortedBenchmark {
         return tree.root;
     }
 
-    @Benchmark
-    public Object timeScapegoat0_6Tree() {
-        ScapegoatTree tree = new ScapegoatTree(0.6);
-        for (int i = 0; i < 100000; i++) {
-            tree.insert(i);
-        }
-        return tree.root;
-    }
+//    @Benchmark
+//    public Object timeScapegoat0_6Tree() {
+//        ScapegoatTree tree = new ScapegoatTree(0.6);
+//        for (int i = 0; i < 100000; i++) {
+//            tree.insert(i);
+//        }
+//        return tree.root;
+//    }
     
-    @Benchmark
-    public Object timeScapegoat0_75Tree() {
-        ScapegoatTree tree = new ScapegoatTree(0.75);
-        for (int i = 0; i < 100000; i++) {
-            tree.insert(i);
-        }
-        return tree.root;
-    }
+//    @Benchmark
+//    public Object timeScapegoat0_75Tree() {
+//        ScapegoatTree tree = new ScapegoatTree(0.75);
+//        for (int i = 0; i < 100000; i++) {
+//            tree.insert(i);
+//        }
+//        return tree.root;
+//    }
     
-    @Benchmark
-    public Object timeScapegoat0_9Tree() {
-        ScapegoatTree tree = new ScapegoatTree(0.9);
-        for (int i = 0; i < 100000; i++) {
-            tree.insert(i);
-        }
-        return tree.root;
-    }
+//    @Benchmark
+//    public Object timeScapegoat0_9Tree() {
+//        ScapegoatTree tree = new ScapegoatTree(0.9);
+//        for (int i = 0; i < 100000; i++) {
+//            tree.insert(i);
+//        }
+//        return tree.root;
+//    }
     
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder().include(".*" + TreesInsertSortedBenchmark.class.getSimpleName() + ".*").forks(1)

@@ -113,47 +113,47 @@ public class TreesDeleteBenchmark {
         return treap.root;
     }
 
-    @Benchmark
-    public Object timeDeleteScapegoat0_6Tree() {
-        ScapegoatTree scapegoatTree0_6 = new ScapegoatTree(0.6);
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_6.insert(randomInts[i]);
-        }
-        
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_6.delete(randomInts[i]);
-        }
-        
-        return scapegoatTree0_6.root;
-    }
+//    @Benchmark
+//    public Object timeDeleteScapegoat0_6Tree() {
+//        ScapegoatTree scapegoatTree0_6 = new ScapegoatTree(0.6);
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_6.insert(randomInts[i]);
+//        }
+//
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_6.delete(randomInts[i]);
+//        }
+//
+//        return scapegoatTree0_6.root;
+//    }
 
-    @Benchmark
-    public Object timeDeleteScapegoat0_75Tree() {
-        ScapegoatTree scapegoatTree0_75 = new ScapegoatTree(0.75);
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_75.insert(randomInts[i]);
-        }
-        
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_75.delete(randomInts[i]);
-        }
-        
-        return scapegoatTree0_75.root;
-    }
+//    @Benchmark
+//    public Object timeDeleteScapegoat0_75Tree() {
+//        ScapegoatTree scapegoatTree0_75 = new ScapegoatTree(0.75);
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_75.insert(randomInts[i]);
+//        }
+//
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_75.delete(randomInts[i]);
+//        }
+//
+//        return scapegoatTree0_75.root;
+//    }
     
-    @Benchmark
-    public Object timeDeleteScapegoat0_9Tree() {
-        ScapegoatTree scapegoatTree0_9 = new ScapegoatTree(0.9);
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_9.insert(randomInts[i]);
-        }
-        
-        for (int i = 0; i < SIZE; i++) {
-            scapegoatTree0_9.delete(randomInts[i]);
-        }
-        
-        return scapegoatTree0_9.root;
-    }
+//    @Benchmark
+//    public Object timeDeleteScapegoat0_9Tree() {
+//        ScapegoatTree scapegoatTree0_9 = new ScapegoatTree(0.9);
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_9.insert(randomInts[i]);
+//        }
+//
+//        for (int i = 0; i < SIZE; i++) {
+//            scapegoatTree0_9.delete(randomInts[i]);
+//        }
+//
+//        return scapegoatTree0_9.root;
+//    }
     
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder().include(".*" + TreesDeleteBenchmark.class.getSimpleName() + ".*").forks(1)

@@ -123,32 +123,32 @@ public class TreesSearchBenchmark {
         return nodes[0];
     }
 
-    @Benchmark
-    public Node timeSearchScapegoat0_6Tree() {
-        Node[] nodes = new Node[SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            nodes[i] = scapegoatTree0_6.search(randomInts[i]);
-        }
-        return nodes[0];
-    }
+//    @Benchmark
+//    public Node timeSearchScapegoat0_6Tree() {
+//        Node[] nodes = new Node[SIZE];
+//        for (int i = 0; i < SIZE; i++) {
+//            nodes[i] = scapegoatTree0_6.search(randomInts[i]);
+//        }
+//        return nodes[0];
+//    }
 
-    @Benchmark
-    public Node timeSearchScapegoat0_75Tree() {
-        Node[] nodes = new Node[SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            nodes[i] = scapegoatTree0_75.search(randomInts[i]);
-        }
-        return nodes[0];
-    }
+//    @Benchmark
+//    public Node timeSearchScapegoat0_75Tree() {
+//        Node[] nodes = new Node[SIZE];
+//        for (int i = 0; i < SIZE; i++) {
+//            nodes[i] = scapegoatTree0_75.search(randomInts[i]);
+//        }
+//        return nodes[0];
+//    }
     
-    @Benchmark
-    public Node timeSearchScapegoat0_9Tree() {
-        Node[] nodes = new Node[SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            nodes[i] = scapegoatTree0_9.search(randomInts[i]);
-        }
-        return nodes[0];
-    }
+//    @Benchmark
+//    public Node timeSearchScapegoat0_9Tree() {
+//        Node[] nodes = new Node[SIZE];
+//        for (int i = 0; i < SIZE; i++) {
+//            nodes[i] = scapegoatTree0_9.search(randomInts[i]);
+//        }
+//        return nodes[0];
+//    }
     
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder().include(".*" + TreesDeleteBenchmark.class.getSimpleName() + ".*").forks(1)
