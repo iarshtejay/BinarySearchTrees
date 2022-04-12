@@ -66,11 +66,76 @@ public class ZipTree extends AbstractBinarySearchTree {
         return x;
     }
 
+    @Override
+    public ZipNode search(int element) {
+        ZipNode node = root;
+        while (node != null && node.value != null && node.value != element) {
+            if (element < node.value) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        return node;
+    }
+
+
     /**
      * @see org.intelligentjava.algos.trees.AbstractBinarySearchTree#delete(int)
      */
     @Override
     public Node delete(int element) {
+        ZipNode x = this.search(element);
+        if(x==null){
+            return x;
+        }
+
+        int key = x.value;
+        ZipNode curr = root;
+        ZipNode prev;
+
+        while(key!=curr.value){
+            prev=curr;
+            curr=(key<curr.value)?curr.left:curr.right;
+        }
+        ZipNode left = curr.left;
+        ZipNode right = curr.right;
+
+        if(left==null){
+            curr = right;
+        }else if(right==null){
+            curr=left;
+        }else if(left.rank>=right.rank){
+            curr=left;
+        }else{
+            curr=right;
+        }
+
+        if(x==root){
+            root=curr;
+        }else if(key<prev.value){
+            prev.left=curr;
+        }else{
+            prev.right=curr;
+        }
+
+        while(left!=null && right!=null){
+            if(left.rank>=right.rank){
+                do{
+                    prev=left;
+                    left=left.right;
+                }
+                while(left!=null && left.rank>=right.rank);
+                prev.right=right;
+            }else{
+                do{
+                    prev=right;
+                    right=right.left;
+                }
+                while(right!=null && left.rank<right.rank);
+                prev.left=left;
+            }
+        }
         return null;
     }
     
