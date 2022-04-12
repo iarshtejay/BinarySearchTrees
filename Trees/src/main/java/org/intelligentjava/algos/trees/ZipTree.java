@@ -2,6 +2,8 @@ package org.intelligentjava.algos.trees;
 
 import org.intelligentjava.algos.trees.utils.MathUtils;
 
+import java.util.Random;
+
 /**
  * Zip tree implementation.
  * 
@@ -23,13 +25,14 @@ public class ZipTree extends AbstractBinarySearchTree {
     public Node insert(int element) {
         int rank = random.nextInt(10000);
         int key = element;
-        ZipNode curr = root;
-        ZipNode x = createNode(key, null, null, null, rank);
-        ZipNode prev;
+        ZipNode curr = (ZipNode) this.root;
+        ZipNode x = (ZipNode) this.createNode(key, null, null, null);
+        x.rank = rank;
+        ZipNode prev = (ZipNode) root;
 
         while(curr!=null && ((rank<curr.rank)||(rank == curr.rank && key>curr.value))){
             prev = curr;
-            curr = key<curr.value?curr.left:curr.right;
+            curr = key<curr.value?(ZipNode) curr.left: (ZipNode) curr.right;
         }
 
         if(curr==root){
@@ -46,18 +49,18 @@ public class ZipTree extends AbstractBinarySearchTree {
             if(curr.value<key){
                 do{
                     prev=curr;
-                    curr=curr.right;
+                    curr=(ZipNode) curr.right;
                 }
                 while(curr!=null && curr.value<=key);
             }else{
                 do{
                     prev=curr;
-                    curr=curr.left;
+                    curr=(ZipNode) curr.left;
                 }
                 while(curr!=null && curr.value>=key);
             }
 
-            if((fix.value>key)||(fix == x && prev.value > key) {
+            if((fix.value>key)||(fix == x && prev.value > key)) {
                 fix.left=curr;
             }else{
                 fix.right=curr;
@@ -68,12 +71,12 @@ public class ZipTree extends AbstractBinarySearchTree {
 
     @Override
     public ZipNode search(int element) {
-        ZipNode node = root;
+        ZipNode node = (ZipNode) root;
         while (node != null && node.value != null && node.value != element) {
             if (element < node.value) {
-                node = node.left;
+                node = (ZipNode) node.left;
             } else {
-                node = node.right;
+                node = (ZipNode) node.right;
             }
         }
         return node;
@@ -91,15 +94,15 @@ public class ZipTree extends AbstractBinarySearchTree {
         }
 
         int key = x.value;
-        ZipNode curr = root;
-        ZipNode prev;
+        ZipNode curr = (ZipNode) root;
+        ZipNode prev = (ZipNode) root;
 
         while(key!=curr.value){
             prev=curr;
-            curr=(key<curr.value)?curr.left:curr.right;
+            curr=(key<curr.value)?(ZipNode) curr.left:(ZipNode) curr.right;
         }
-        ZipNode left = curr.left;
-        ZipNode right = curr.right;
+        ZipNode left = (ZipNode) curr.left;
+        ZipNode right = (ZipNode) curr.right;
 
         if(left==null){
             curr = right;
@@ -122,15 +125,15 @@ public class ZipTree extends AbstractBinarySearchTree {
         while(left!=null && right!=null){
             if(left.rank>=right.rank){
                 do{
-                    prev=left;
-                    left=left.right;
+                    prev=(ZipNode) left;
+                    left=(ZipNode) left.right;
                 }
                 while(left!=null && left.rank>=right.rank);
                 prev.right=right;
             }else{
                 do{
-                    prev=right;
-                    right=right.left;
+                    prev=(ZipNode) right;
+                    right=(ZipNode) right.left;
                 }
                 while(right!=null && left.rank<right.rank);
                 prev.left=left;
